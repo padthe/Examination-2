@@ -1,5 +1,7 @@
 TODO
 
+• fix loop while game is running
+
 • separate classes
 
 
