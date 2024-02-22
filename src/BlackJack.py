@@ -12,7 +12,7 @@ while start is False:
     else:
         print("Invalid input. Please try again.")
 
-    print("The game is about to start...")
+    print("The game is about to start....")
     print("Shuffling the deck...")
     deck = Deck()
     deck.shuffle_deck()
