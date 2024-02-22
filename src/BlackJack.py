@@ -1,11 +1,8 @@
-import random
 from deck import Deck
 from player import Player
-from hand import Hand
 
-game
 start = False
-while start == False:
+while start is False:
     print("Welcome to BlackJack!")
     print("To start the type 'start' and press enter: ")
     user_input = input()
@@ -25,7 +22,7 @@ while start == False:
     dealer.draw_card(deck)
     print("Player's hand: ", player.hand.cards)
     print("Dealer's hand: ", dealer.hand.cards)
-    print("Do you want to hit or stand? (h/s)")
+    print("Do you want to hit or stand? (hit/stand)")
     user_input = input()
     if user_input == "hit":
         player.draw_card(deck)
