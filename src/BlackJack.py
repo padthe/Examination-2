@@ -20,7 +20,7 @@ while start == False:
     deck.shuffle_deck()
     player = Player()
     dealer = Player()
-    print("Dealing the cards...")
+    print("Dealing the cards....")
     player.draw_card(deck)
     dealer.draw_card(deck)
     print("Player's hand: ", player.hand.cards)
