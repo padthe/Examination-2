@@ -1,3 +1,4 @@
+"""This is the main file for the BlackJack game."""
 from deck import Deck
 from player import Player
 
@@ -8,7 +9,7 @@ while start is False:
     user_input = input()
     if user_input == "start":
         start = True
-    else: 
+    else:
         print("Invalid input. Please try again.")
 
     print("The game is about to start...")
@@ -37,4 +38,3 @@ while start is False:
         if dealer.hand.calculate_value() > 21:
             print("Dealers hand: ", dealer.hand.cards)
             print("Dealer busts! Player wins.")
-
