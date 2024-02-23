@@ -1,3 +1,4 @@
+"""Hand class to represent a player's hand in a game of blackjack."""
 class Hand:
     def __init__(self):
         self.cards = []  # starts with an empty list

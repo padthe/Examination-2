@@ -1,3 +1,4 @@
+"""Player class for the game of Blackjack."""
 from deck import Deck
 from hand import Hand
 

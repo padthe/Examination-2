@@ -1,3 +1,4 @@
+"""Deck class for the card game."""
 import random
 from random import shuffle
 class Deck:
