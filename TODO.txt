@@ -1,12 +1,12 @@
 TODO
 
-• fix loop while game is running
+• fix loop while game is running (done) 
 
-• separate classes
+• separate classes (done)
 
 
 • Need to fix interface when game is running. Main class need to be more user friendly
-currently not optimized when it comes to the text interface whenever the game is running.
+currently not optimized when it comes to the text interface whenever the game is running. (working on it, currently better than it was in v1.0.0 but still not optimal)
 
-• maybe add betting system and pickle and load to store player funds
+• maybe add betting system and pickle and load to store player funds (we'll see about that)
 
