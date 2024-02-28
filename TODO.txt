@@ -1,8 +1,14 @@
 TODO
+------------Requirements-------------
+• Make the user able to choose a name
 
-• fix loop while game is running (done) 
+• Make a high score list which persist through name change
 
-• separate classes (done)
+• Be able to see the rules of the game
+-------------------------------------
+
+
+
 
 
 • Need to fix interface when game is running. Main class need to be more user friendly
