@@ -1,6 +1,7 @@
 """This is the main file for the BlackJack game."""
 from deck import Deck
 from player import Player
+import time
 
 while True:  # Outer loop to allow for multiple rounds
     start = False  # Reset the start variable for a new round
@@ -20,9 +21,13 @@ while True:  # Outer loop to allow for multiple rounds
     player = Player()
     dealer = Player()
     print("Dealing the cards")
+    time.sleep(0.5)
     print("Dealing the cards.")
+    time.sleep(0.5)
     print("Dealing the cards..")
+    time.sleep(0.5)
     print("Dealing the cards...")
+    time.sleep(0.5)
     print("Dealing the cards....")
     player.draw_card(deck)
     dealer.draw_card(deck)
