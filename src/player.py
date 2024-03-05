@@ -17,3 +17,4 @@ class Player:
     def draw_card(self, deck):
         card = deck.deal_card()
         self.hand.add_card(card)
+
