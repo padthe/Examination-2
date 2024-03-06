@@ -1,58 +1,38 @@
-from deck import Deck
+from game import Game
+from scoreboard import Scoreboard
 from player import Player
-import time
+from game import GameEndException
 
-while True:  # Outer loop to allow for multiple rounds
+
+def main_menu():
     print("Welcome to BlackJack!")
-    print("To start the type 'start' and press enter: ")
-    user_input = input()
-    
-    if user_input == "start":
-        while True:  # Inner loop for the current round
-            print("The game is about to start....")
-            print("Shuffling the deck...")
-            deck = Deck()
-            deck.shuffle_deck()
-            player = Player()
-            dealer = Player()
-            print("Dealing the cards.")
-            time.sleep(0.5)
-            print("Dealing the cards..")
-            time.sleep(0.5)
-            print("Dealing the cards...")
-            time.sleep(0.5)
-            print("Dealing the cards....")
-            player.draw_card(deck)
-            dealer.draw_card(deck)
-            print("Player's hand: ", player.hand.cards)
-            print("Dealer's hand: ", dealer.hand.cards)
 
-            while True:  # Inner loop for the current round
-                print("Do you want to hit or stand? (hit/stand)")
-                user_input = input()
-                if user_input == "hit":
-                    player.draw_card(deck)
-                    print("Player's hand: ", player.hand.cards)
-                    print("Dealer's hand: ", dealer.hand.cards)
-                    if player.hand.calculate_value() > 21:
-                        print("Player busts! Dealer wins.")
-                        break  # Exit the current round
-                elif user_input == "stand":
-                    while dealer.hand.calculate_value() < 17:
-                        dealer.draw_card(deck)
-                    print("Player's hand: ", player.hand.cards)
-                    print("Dealer's hand: ", dealer.hand.cards)
-                    if dealer.hand.calculate_value() > 21:
-                        print("Dealer busts! Player wins.")
-                    elif dealer.hand.calculate_value() >= player.hand.calculate_value():
-                        print("Dealer wins.")
-                    else:
-                        print("Player wins.")
-                    break  # Exit the current round
+    player = Player()
+    player.add_player(player.user_name)  # Update the Player class to include this method
+    scoreboard = Scoreboard()
 
-            print("Do you want to play another round? (yes/no)")
-            play_again = input()
-            if play_again.lower() != "yes":
-                break  # Exit the inner loop and start a new game
-    else:
-        print("Invalid input. Please try again.")
+    while True:
+        try:
+            print("1. Play")
+            print("2. Check Scoreboard")
+            print("3. See Rules")
+            print("4. Exit")
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                game = Game(player, scoreboard)
+                game.start_game()
+            elif choice == "2":
+                scoreboard.display_scores()
+            elif choice == "3":
+                print("Rules")
+            elif choice == "4":
+                print("Exiting the game. Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please try again.")
+        except GameEndException:
+            print("Returning to the main menu.")
+
+if __name__ == "__main__":
+    main_menu()

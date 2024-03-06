@@ -2,10 +2,14 @@
 from deck import Deck
 from hand import Hand
 
+
 class Player:
     def __init__(self):
         self.hand = Hand()
 
+    def add_player(self, user_name):
+        self.user_name = user_name
+        
     def user_name(self):
         user_name = input()
         return user_name
