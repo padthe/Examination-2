@@ -1,8 +1,10 @@
 import pickle
 
 class Scoreboard:
-    def __init__(self):
-        self.scores = {}
+    def __init__(self, filename="scores.pkl"):
+        self.filename = filename
+        self.scores = self.load_scores()
+
 
     def add_player(self, player_name):
         if player_name not in self.scores:
@@ -19,19 +21,26 @@ class Scoreboard:
         if not self.scores:
             print("No players in the scoreboard.")
         else:
-            print("Scoreboard:")
+            print("🌟 Let's see who is currently at the top! 🌟")
+            print("------------------------------")
+            print("Player      |  Score")
+            print("------------------------------")
             for player, score in self.scores.items():
-                print(f"{player}: {score}")
+                print(f"{player.ljust(12)} | {score}")
+            print("------------------------------")
 
-    def save_scores(self, filename="scores.pkl"):
-        with open(filename, "wb") as file:
-            pickle.dump(self.scores, file)
 
-    def load_scores(self, filename="scores.pkl"):
+    def load_scores(self):
         try:
-            with open(filename, "rb") as file:
-                self.scores = pickle.load(file)
+            with open(self.filename, "rb") as file:
+                return pickle.load(file)
         except FileNotFoundError:
             print(f"No file found. Creating a new scoreboard.")
+            return {}
         except Exception as e:
             print(f"An error occurred while loading scores: {e}")
+            return {}
+
+    def save_scores(self):
+        with open(self.filename, "wb") as file:
+            pickle.dump(self.scores, file)

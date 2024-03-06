@@ -9,7 +9,7 @@ def main_menu():
 
     player = Player()
     player.add_player(player.user_name)  # Update the Player class to include this method
-    scoreboard = Scoreboard()
+    scoreboard = Scoreboard("scores.pkl")
 
     while True:
         try:
