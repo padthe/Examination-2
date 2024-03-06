@@ -77,4 +77,41 @@ class Game:
             self.scoreboard.update_score(self.player.user_name, result)
             self.scoreboard.save_scores()
         except AttributeError:
-                print("Scoreboard does not have the required methods.")
+            print("Scoreboard does not have the required methods.")
+
+    @staticmethod
+    def game_rules():
+        print("\n🃏🎰 Welcome to the Glamorous World of Blackjack! 🎰🃏\n")
+        print("In this high-stakes game of chance, your mission is to chase the magic number 21 without going over.")
+        print("Here's the dazzling rundown:")
+        print("- Both you and the dealer kick off with a duo of tantalizing cards.")
+        print("- Will you 'hit' for another card or 'stand' to savor the suspense?")
+        print("- Exceed 21, and you'll be washed away in a wave of defeat. Dealer's bust? You're the star!")
+        print("- Nail a perfect 21, and you're crowned with the Blackjack glory. Dealer hits it? They steal the show.")
+        print("- Opt for 'stand,' and the dealer dances with the cards until reaching the swanky 17.")
+        print("- The player closest to 21 without a bust claims the red carpet victory.")
+        print("\nMay the cards be ever in your favor! 🌟\n")
+        print("Feel the thrill? Ready to roll again or gracefully exit the stage? The choice is yours.")
+        print(" ")
+        print(" ")
+    @staticmethod
+    def game_credits():
+        credits = [
+            "🎮🃏 Game Credits - A One-Man Extravaganza! 🃏🎮",
+            "🚀 Taking you on a journey through code and chaos, it's none other than:",
+            "🤠🎸 The Lone Ranger of Programming - Patrick! 🎸🤠",
+            "Witness the breathtaking solo performance, where Patrick played all the roles:",
+            "- Developer: Patrick (a true virtuoso)",
+            "- UI Maestro: Patrick (creating symphonies with pixels)",
+            "- Test Pilot: Patrick (bravely flying through lines of code)",
+            "- Bug Whisperer: Patrick (taming bugs with a gentle touch)",
+            "Special Thanks (drumroll):",
+            "- Patrick (because who needs a team when you've got yourself?)",
+            "🎉 Bravo! Encore! Bravo! 🎉",
+            ]
+
+        for line in credits:
+            print(line)
+            time.sleep(1)  # Adjust the delay as needed
+
+        print("\nThat's a wrap! Thanks for playing and enjoy your solo standing ovation! 👏👏👏\n")
