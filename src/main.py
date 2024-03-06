@@ -8,7 +8,7 @@ def main_menu():
     print("Welcome to BlackJack!")
 
     player = Player()
-    player.add_player(player.user_name)  # Update the Player class to include this method
+    player.add_player(player.user_name)
     scoreboard = Scoreboard("scores.pkl")
 
     while True:
