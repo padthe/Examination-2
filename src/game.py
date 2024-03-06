@@ -112,6 +112,6 @@ class Game:
 
         for line in credits:
             print(line)
-            time.sleep(1)  # Adjust the delay as needed
+            time.sleep(1) 
 
         print("\nThat's a wrap! Thanks for playing and enjoy your solo standing ovation! 👏👏👏\n")
