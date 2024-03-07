@@ -1,10 +1,10 @@
 TODO
 ------------Requirements-------------
-• Make the user able to choose a name
+• Make the user able to choose a name - done 
 
-• Make a high score list which persist through name change
+• Make a high score list - done
 
-• Be able to see the rules of the game
+• Be able to see the rules of the game - will fix soon
 -------------------------------------
 
 

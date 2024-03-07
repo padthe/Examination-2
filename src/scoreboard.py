@@ -4,7 +4,7 @@ class Scoreboard:
     def __init__(self, filename="scores.pkl"):
         self.filename = filename
         self.scores = self.load_scores()
-
+        self.user_name = ""  # Initialize user_name as an empty string
 
     def add_player(self, player_name):
         if player_name not in self.scores:
@@ -29,6 +29,11 @@ class Scoreboard:
                 print(f"{player.ljust(12)} | {score}")
             print("------------------------------")
 
+    def update_user_name(self, old_name, new_name):
+        if old_name in self.scores:
+            self.scores[new_name] = self.scores.pop(old_name)
+        else:
+            print(f"Player {old_name} not found in the scoreboard.")
 
     def load_scores(self):
         try:
