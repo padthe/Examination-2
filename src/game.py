@@ -1,4 +1,3 @@
-"""Game class for the card game."""
 import time
 from deck import Deck
 from player import Player
@@ -6,7 +5,6 @@ from scoreboard import Scoreboard
 from gameendexception import GameEndException
 
 class Game:
-    """Game class for the card game."""
     def __init__(self, player, scoreboard):
         self.scoreboard = scoreboard
         self.deck = None
@@ -74,6 +72,7 @@ class Game:
         play_again = input().lower()
         if play_again == "no":
             raise GameEndException
+
     def save_results(self, result):
         """Save the results of the game."""
         try:
@@ -81,7 +80,7 @@ class Game:
             self.scoreboard.save_scores()
         except AttributeError:
             print("Scoreboard does not have the required methods.")
-    
+
     @staticmethod
     def game_rules():
         """Print the game rules."""

@@ -1,8 +1,7 @@
-    """Deck class for the card game."""
-    import random
-    from random import shuffle
+import random
+from random import shuffle
 
-    class Deck:
+class Deck:
         """Deck class for the card game."""
         def __init__(self):
             self.deck = []
