@@ -1,10 +1,12 @@
+"""Game class for the card game."""
+import time
 from deck import Deck
 from player import Player
 from scoreboard import Scoreboard
-import time
 from gameendexception import GameEndException
 
 class Game:
+    """Game class for the card game."""
     def __init__(self, player, scoreboard):
         self.scoreboard = scoreboard
         self.deck = None
@@ -12,17 +14,18 @@ class Game:
         self.dealer = None
 
     def start_game(self):
+        """Start the game."""
         self.player.user_name = input("Enter your name: ")
         while True:
             print("To start, type 'hit me' and press enter: ")
             user_input = input()
-            
             if user_input == "hit me":
                 self.play_round()
             else:
                 print("Invalid input. Please try again.")
 
     def play_round(self):
+        """Play a round of the game."""
         print("The dealer is getting ready....")
         print("Shuffling the deck...")
         self.deck = Deck()
@@ -71,16 +74,17 @@ class Game:
         play_again = input().lower()
         if play_again == "no":
             raise GameEndException
-        
     def save_results(self, result):
+        """Save the results of the game."""
         try:
             self.scoreboard.update_score(self.player.user_name, result)
             self.scoreboard.save_scores()
         except AttributeError:
             print("Scoreboard does not have the required methods.")
-
+    
     @staticmethod
     def game_rules():
+        """Print the game rules."""
         print("\n🃏🎰 Welcome to the Glamorous World of Blackjack! 🎰🃏\n")
         print("In this high-stakes game of chance, your mission is to chase the magic number 21 without going over.")
         print("Here's the dazzling rundown:")
@@ -94,8 +98,10 @@ class Game:
         print("Feel the thrill? Ready to roll again or gracefully exit the stage? The choice is yours.")
         print(" ")
         print(" ")
+
     @staticmethod
     def game_credits():
+        """Print the game credits."""
         credits = [
             "🎮🃏 Game Credits - A One-Man Extravaganza! 🃏🎮",
             "🚀 Taking you on a journey through code and chaos, it's none other than:",
@@ -112,6 +118,6 @@ class Game:
 
         for line in credits:
             print(line)
-            time.sleep(1) 
+            time.sleep(1)
 
         print("\nThat's a wrap! Thanks for playing and enjoy your solo standing ovation! 👏👏👏\n")

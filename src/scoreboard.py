@@ -4,18 +4,18 @@ class Scoreboard:
     def __init__(self, filename="scores.pkl"):
         self.filename = filename
         self.scores = self.load_scores()
-        self.user_name = ""  # Initialize user_name as an empty string
+        self.user_name = ""  
 
     def add_player(self, player_name):
         if player_name not in self.scores:
             self.scores[player_name] = 0
 
     def update_score(self, player_name, result):
-        self.add_player(player_name)  # Ensure the player is in the scoreboard
+        self.add_player(player_name)  
         if result == "win":
             self.scores[player_name] += 1
         elif result == "draw":
-            self.scores[player_name] += 0.5  # Adjust based on your rules for a draw
+            self.scores[player_name] += 0.5  # currently not in use in the game
 
     def display_scores(self):
         if not self.scores:

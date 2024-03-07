@@ -5,7 +5,7 @@ from hand import Hand
 class Player:
     def __init__(self):
         self.hand = Hand()
-        self.user_name = ""  # Initialize user_name as an empty string
+        self.user_name = ""  
 
     def add_player(self, user_name):
         self.user_name = user_name
