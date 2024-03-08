@@ -50,15 +50,17 @@ class Game:
             user_input = input().lower().strip()
             if "hit" in user_input:
                 self._player.draw_card(self._deck)
-                print("Player's hand: ", self._dealer._hand._cards)
+                print("Player's hand: ", self._player._hand._cards)
                 if self._player._hand.calculate_value() > 21:
                     print("Player busts! Dealer wins.")
                     self.save_results("lose")
                     break
             elif "stand" in user_input:
+                print("Player chose to stand.")
+
                 while self._dealer._hand.calculate_value() < 17:
                     self._dealer.draw_card(self._deck)
-                print("Player's hand: ", self._dealer._hand._cards)
+                    print("Dealer's hand: ", self._dealer._hand._cards)
 
                 player_value = self._player._hand.calculate_value()
                 dealer_value = self._dealer._hand.calculate_value()
@@ -72,16 +74,14 @@ class Game:
                 else:
                     print("It's a draw.")
                     self.save_results("draw")
-                break
 
-        print(
-            "Press any button to play a new round, or type 'no' to return to the main menu."
-        )
-        play_again = input().lower().strip()
-        if play_again == "no":
-            raise GameEndException
-        else:
-            input("Press enter to continue.")
+                print("Press any key to play a new round, or type 'no' to return to the main menu.")
+                play_again = input().lower().strip()
+                if play_again == "no":
+                    raise GameEndException
+                else:
+                    # Continue to the next iteration of the main loop
+                    break
 
     def save_results(self, result):
         """Save the results of the game."""
@@ -143,3 +143,6 @@ class Game:
         print(
             "\nThat's a wrap! Thanks for playing and enjoy your solo standing ovation! 👏👏👏\n"
         )
+
+if __name__ == "__main__":
+    main_menu()

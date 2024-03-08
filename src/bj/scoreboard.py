@@ -41,7 +41,8 @@ class Scoreboard:
     def update_user_name(self, old_name, new_name):
         """Update the username in the scoreboard."""
         if old_name in self._scores:
-            self._scores[new_name] = self._scores.pop(old_name)
+                self._scores[new_name] = self._scores.pop(old_name)
+                self._user_name = new_name  
         else:
             print(f"Player {old_name} not found in the scoreboard.")
 
