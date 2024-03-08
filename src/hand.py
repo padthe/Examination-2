@@ -17,6 +17,12 @@ class Hand:
             return 1
         else:
             return int(rank)  # convert numeric ranks to integers
+        
+
+    def reset_hand(self):
+        """Reset the hand by clearing cards and resetting the value."""
+        self.cards = []
+        self.value = 0
 
     def calculate_value(self):
         return self.value

@@ -15,17 +15,19 @@ class Scoreboard:
         if result == "win":
             self.scores[player_name] += 1
         elif result == "draw":
-            self.scores[player_name] += 0.5  # currently not in use in the game
+            self.scores[player_name] += 0.5  # Add 0.5 for a draw
 
     def display_scores(self):
         if not self.scores:
             print("No players in the scoreboard.")
         else:
+            sorted_scores = sorted(self.scores.items(), key=lambda x: x[1], reverse=True)
+
             print("🌟 Let's see who is currently at the top! 🌟")
             print("------------------------------")
             print("Player      |  Score")
             print("------------------------------")
-            for player, score in self.scores.items():
+            for player, score in sorted_scores:
                 print(f"{player.ljust(12)} | {score}")
             print("------------------------------")
 

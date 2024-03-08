@@ -5,7 +5,7 @@ from game import GameEndException
 
 
 def main_menu():
-    print("Welcome to BlackJack!")
+    print(f"{'🃏🃏🃏Welcome to BlackJack!🃏🃏🃏':^40}")
 
     player = Player()
     player.add_player(player.user_name)
@@ -34,6 +34,7 @@ def main_menu():
                 new_name = player.user_name
                 scoreboard.update_user_name(old_name, new_name)
                 scoreboard.save_scores()
+                print(f"Username updated successfully!\nYour new username is {new_name}.")
             elif choice == "5":
                 Game.game_credits()
             elif choice == "6":

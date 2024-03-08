@@ -17,7 +17,7 @@ class Game:
         while True:
             print("To start, type 'hit me' and press enter: ")
             user_input = input()
-            if user_input == "hit me":
+            if "hit" in user_input:
                 self.play_round()
             else:
                 print("Invalid input. Please try again.")
@@ -30,22 +30,23 @@ class Game:
         self.deck.shuffle_deck()
         self.dealer = Player()  # Initialize dealer here
 
+        self.player.hand.reset_hand()
+        self.dealer.hand.reset_hand()
+
         print("Dealing the cards.")
-        for _ in range(4):
+        for _ in range(2):
             time.sleep(0.5)
             print("Dealing the cards....")
-            if _ % 2 == 0:
-                self.player.draw_card(self.deck)
-            else:
-                self.dealer.draw_card(self.deck)
+            self.player.draw_card(self.deck)
+            self.dealer.draw_card(self.deck)
 
         print("Player's hand: ", self.player.hand.cards)
         print("Dealer's hand: ", self.dealer.hand.cards)
 
         while True:
             print("Do you want to hit or stand? (hit/stand)")
-            user_input = input()
-            if user_input == "hit":
+            user_input = input().lower().strip()
+            if "hit" in user_input:
                 self.player.draw_card(self.deck)
                 print("Player's hand: ", self.player.hand.cards)
                 print("Dealer's hand: ", self.dealer.hand.cards)
@@ -53,25 +54,32 @@ class Game:
                     print("Player busts! Dealer wins.")
                     self.save_results("lose")
                     break
-            elif user_input == "stand":
+            elif "stand" in user_input:
                 while self.dealer.hand.calculate_value() < 17:
                     self.dealer.draw_card(self.deck)
                 print("Player's hand: ", self.player.hand.cards)
                 print("Dealer's hand: ", self.dealer.hand.cards)
-                if self.dealer.hand.calculate_value() > 21:
-                    print("Dealer busts! Player wins.")
+    
+                player_value = self.player.hand.calculate_value()
+                dealer_value = self.dealer.hand.calculate_value()
+
+                if dealer_value > 21 or player_value > dealer_value:
+                    print("Player wins.")
                     self.save_results("win")
-                elif self.dealer.hand.calculate_value() == 21:
+                elif dealer_value > player_value:
                     print("Dealer wins.")
                     self.save_results("lose")
                 else:
-                    print("Player wins.")
-                    self.save_results("win")
+                    print("It's a draw.")
+                    self.save_results("draw")
                 break
-        print("Do you want to play another round? (yes/no)")
-        play_again = input().lower()
+
+        print("Press any button to play a new round, or type 'no' to return to main menu.")
+        play_again = input().lower().strip()
         if play_again == "no":
             raise GameEndException
+        else:
+            input("Press enter to continue.")
 
     def save_results(self, result):
         """Save the results of the game."""
