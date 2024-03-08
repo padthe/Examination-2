@@ -5,11 +5,13 @@ class Hand:
         self._value = 0   # starts with zero value
 
     def add_card(self, card):
+        """Add a card to the hand and update the value."""
         self._cards.append(card)
         card_value = self.get_card_value(card)
         self._value += card_value
 
     def get_card_value(self, card):
+        """Get the value of a card."""
         rank = card.split()[0]  # split the card string to get the rank
         if rank in ['Jack', 'Queen', 'King']:
             return 10
@@ -18,20 +20,24 @@ class Hand:
         else:
             return int(rank)  # convert numeric ranks to integers
 
-    # Getter for cards
+    
     def get_cards(self):
+        """ Get the cards in the hand."""
         return self._cards
 
-    # Setter for cards
+    
     def set_cards(self, new_cards):
+        """ Set the cards in the hand."""
         self._cards = new_cards
 
-    # Getter for value
+    
     def get_value(self):
+        """ Get the value of the hand."""
         return self._value
 
-    # Setter for value
+    
     def set_value(self, new_value):
+        """ Set the value of the hand."""
         self._value = new_value
 
     def reset_hand(self):
@@ -40,4 +46,5 @@ class Hand:
         self._value = 0
 
     def calculate_value(self):
+        """Calculate the value of the hand."""
         return self._value

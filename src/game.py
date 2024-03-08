@@ -6,6 +6,7 @@ from gameendexception import GameEndException
 
 class Game:
     def __init__(self, player, scoreboard):
+        """Initialize the game."""
         self._scoreboard = scoreboard
         self._deck = None
         self._player = player
@@ -117,8 +118,7 @@ class Game:
             "- Test Pilot: Patrick (bravely flying through lines of code)",
             "- Bug Whisperer: Patrick (taming bugs with a gentle touch)",
             "Special Thanks (drumroll):",
-            "- Patrick (because who needs a team when you've got yourself?)",
-            "🎉 Bravo! Encore! Bravo! 🎉",
+            "- Patrick ",
             ]
 
         for line in credits:
