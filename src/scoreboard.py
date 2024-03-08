@@ -2,26 +2,26 @@ import pickle
 
 class Scoreboard:
     def __init__(self, filename="scores.pkl"):
-        self.filename = filename
-        self.scores = self.load_scores()
-        self.user_name = ""  
+        self._filename = filename
+        self._scores = self.load_scores()
+        self._user_name = ""
 
     def add_player(self, player_name):
-        if player_name not in self.scores:
-            self.scores[player_name] = 0
+        if player_name not in self._scores:
+            self._scores[player_name] = 0
 
     def update_score(self, player_name, result):
-        self.add_player(player_name)  
+        self.add_player(player_name)
         if result == "win":
-            self.scores[player_name] += 1
+            self._scores[player_name] += 1
         elif result == "draw":
-            self.scores[player_name] += 0.5  # Add 0.5 for a draw
+            self._scores[player_name] += 0.5
 
     def display_scores(self):
-        if not self.scores:
+        if not self._scores:
             print("No players in the scoreboard.")
         else:
-            sorted_scores = sorted(self.scores.items(), key=lambda x: x[1], reverse=True)
+            sorted_scores = sorted(self._scores.items(), key=lambda x: x[1], reverse=True)
 
             print("🌟 Let's see who is currently at the top! 🌟")
             print("------------------------------")
@@ -32,14 +32,14 @@ class Scoreboard:
             print("------------------------------")
 
     def update_user_name(self, old_name, new_name):
-        if old_name in self.scores:
-            self.scores[new_name] = self.scores.pop(old_name)
+        if old_name in self._scores:
+            self._scores[new_name] = self._scores.pop(old_name)
         else:
             print(f"Player {old_name} not found in the scoreboard.")
 
     def load_scores(self):
         try:
-            with open(self.filename, "rb") as file:
+            with open(self._filename, "rb") as file:
                 return pickle.load(file)
         except FileNotFoundError:
             print(f"No file found. Creating a new scoreboard.")
@@ -49,5 +49,21 @@ class Scoreboard:
             return {}
 
     def save_scores(self):
-        with open(self.filename, "wb") as file:
-            pickle.dump(self.scores, file)
+        with open(self._filename, "wb") as file:
+            pickle.dump(self._scores, file)
+
+    # Getter for scores
+    def get_scores(self):
+        return self._scores
+
+    # Setter for scores
+    def set_scores(self, new_scores):
+        self._scores = new_scores
+
+    # Getter for user_name
+    def get_user_name(self):
+        return self._user_name
+
+    # Setter for user_name
+    def set_user_name(self, new_name):
+        self._user_name = new_name

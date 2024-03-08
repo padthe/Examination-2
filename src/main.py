@@ -8,7 +8,7 @@ def main_menu():
     print(f"{'🃏🃏🃏Welcome to BlackJack!🃏🃏🃏':^40}")
 
     player = Player()
-    player.add_player(player.user_name)
+    player.add_player(player._user_name)
     scoreboard = Scoreboard("scores.pkl")
     
     while True:

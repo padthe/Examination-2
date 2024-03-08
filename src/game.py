@@ -6,14 +6,14 @@ from gameendexception import GameEndException
 
 class Game:
     def __init__(self, player, scoreboard):
-        self.scoreboard = scoreboard
-        self.deck = None
-        self.player = player
-        self.dealer = None
+        self._scoreboard = scoreboard
+        self._deck = None
+        self._player = player
+        self._dealer = None
 
     def start_game(self):
         """Start the game."""
-        self.player.user_name = input("Enter your name: ")
+        self._player.user_name = input("Enter your name: ")
         while True:
             print("To start, type 'hit me' and press enter: ")
             user_input = input()
@@ -26,42 +26,40 @@ class Game:
         """Play a round of the game."""
         print("The dealer is getting ready....")
         print("Shuffling the deck...")
-        self.deck = Deck()
-        self.deck.shuffle_deck()
-        self.dealer = Player()  # Initialize dealer here
+        self._deck = Deck()
+        self._deck.shuffle_deck()
+        self._dealer = Player()  # Initialize dealer here
 
-        self.player.hand.reset_hand()
-        self.dealer.hand.reset_hand()
+        self._player._hand.reset_hand()
+        self._dealer._hand.reset_hand()
 
         print("Dealing the cards.")
         for _ in range(2):
             time.sleep(0.5)
             print("Dealing the cards....")
-            self.player.draw_card(self.deck)
-            self.dealer.draw_card(self.deck)
+            self._player.draw_card(self._deck)
+            self._dealer.draw_card(self._deck)
 
-        print("Player's hand: ", self.player.hand.cards)
-        print("Dealer's hand: ", self.dealer.hand.cards)
+        print("Player's hand: ", self._player._hand._cards)
+        print("Dealer's hand: ", self._dealer._hand._cards)
 
         while True:
             print("Do you want to hit or stand? (hit/stand)")
             user_input = input().lower().strip()
             if "hit" in user_input:
-                self.player.draw_card(self.deck)
-                print("Player's hand: ", self.player.hand.cards)
-                print("Dealer's hand: ", self.dealer.hand.cards)
-                if self.player.hand.calculate_value() > 21:
+                self._player.draw_card(self._deck)
+                print("Player's hand: ", self._dealer._hand._cards)
+                if self._player._hand.calculate_value() > 21:
                     print("Player busts! Dealer wins.")
                     self.save_results("lose")
                     break
             elif "stand" in user_input:
-                while self.dealer.hand.calculate_value() < 17:
-                    self.dealer.draw_card(self.deck)
-                print("Player's hand: ", self.player.hand.cards)
-                print("Dealer's hand: ", self.dealer.hand.cards)
+                while self._dealer._hand.calculate_value() < 17:
+                    self._dealer.draw_card(self._deck)
+                print("Player's hand: ", self._dealer._hand._cards)
     
-                player_value = self.player.hand.calculate_value()
-                dealer_value = self.dealer.hand.calculate_value()
+                player_value = self._player._hand.calculate_value()
+                dealer_value = self._dealer._hand.calculate_value()
 
                 if dealer_value > 21 or player_value > dealer_value:
                     print("Player wins.")
@@ -74,7 +72,7 @@ class Game:
                     self.save_results("draw")
                 break
 
-        print("Press any button to play a new round, or type 'no' to return to main menu.")
+        print("Press any button to play a new round, or type 'no' to return to the main menu.")
         play_again = input().lower().strip()
         if play_again == "no":
             raise GameEndException
@@ -84,8 +82,8 @@ class Game:
     def save_results(self, result):
         """Save the results of the game."""
         try:
-            self.scoreboard.update_score(self.player.user_name, result)
-            self.scoreboard.save_scores()
+            self._scoreboard.update_score(self._player.user_name, result)
+            self._scoreboard.save_scores()
         except AttributeError:
             print("Scoreboard does not have the required methods.")
 
