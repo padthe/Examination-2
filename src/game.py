@@ -16,7 +16,7 @@ class Game:
         """Start the game."""
         self._player.user_name = input("Enter your name: ")
         while True:
-            print("To start, type 'hit me' and press enter: ")
+            print("Type 'hit me' to indicate to the dealer that you are ready to play.")
             user_input = input()
             if "hit" in user_input:
                 self.play_round()

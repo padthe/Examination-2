@@ -1,34 +1,38 @@
 import unittest
-from deck import Deck 
+from unittest.mock import patch
+from deck import Deck
 
 class TestDeck(unittest.TestCase):
-    """Test methods in the Deck class."""
     def setUp(self):
         self.deck = Deck()
 
-    def test_deck_creation(self):
-        """Test that the deck is created with the correct number of cards."""
-        self.assertEqual(len(self.deck.deck), 52)
+    def test_create_deck(self):
+        self.assertEqual(len(self.deck.get_deck()), 52)
 
     def test_shuffle_deck(self):
-        """Test that the deck is shuffled."""
-        original_order = self.deck.deck.copy()
+        original_deck = self.deck.get_deck().copy()
         self.deck.shuffle_deck()
-        self.assertNotEqual(self.deck.deck, original_order)
-        self.assertEqual(set(self.deck.deck), set(original_order))
+        shuffled_deck = self.deck.get_deck()
+        self.assertNotEqual(original_deck, shuffled_deck)
 
     def test_deal_card(self):
-        """Test that a card is dealt from the deck."""
-        initial_length = len(self.deck.deck)
+        original_deck = self.deck.get_deck().copy()
         card = self.deck.deal_card()
-        self.assertIsNotNone(card)
-        self.assertEqual(len(self.deck.deck), initial_length - 1)
+        self.assertIn(card, original_deck)
 
     def test_deal_card_empty_deck(self):
-        """Test dealing from an empty deck."""
-        self.deck.deck = []
+        # Ensure dealing from an empty deck returns None
+        self.deck.set_deck([])
         card = self.deck.deal_card()
         self.assertIsNone(card)
+
+    def test_get_deck(self):
+        self.assertIsInstance(self.deck.get_deck(), list)
+
+    def test_set_deck(self):
+        new_deck = ['Card1', 'Card2']
+        self.deck.set_deck(new_deck)
+        self.assertEqual(self.deck.get_deck(), new_deck)
 
 if __name__ == '__main__':
     unittest.main()

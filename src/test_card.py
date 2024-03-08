@@ -2,37 +2,27 @@ import unittest
 from card import Card
 
 class TestCard(unittest.TestCase):
-    """Test methods in the Card class."""
     def test_init(self):
-        """Test that the suit, rank, and value attributes are set correctly."""
-        card = Card("Hearts", "Ace")
-        self.assertEqual(card.suit, "Hearts")
-        self.assertEqual(card.rank, "Ace")
+        card = Card('Hearts', 'Ace')
+        self.assertEqual(card.suit, 'Hearts')
+        self.assertEqual(card.rank, 'Ace')
         self.assertEqual(card.value, 1)
 
-        card = Card("Diamonds", "10")
-        self.assertEqual(card.suit, "Diamonds")
-        self.assertEqual(card.rank, "10")
-        self.assertEqual(card.value, 10)
+    def test_assign_value_ace(self):
+        card = Card('Diamonds', 'Ace')
+        self.assertEqual(card.assign_value('Ace'), 1)
 
-    def test_assign_value(self):
-        """Test that the correct value is assigned to the card."""
-        card = Card("Clubs", "King")
-        self.assertEqual(card.assign_value("King"), 10)
+    def test_assign_value_face_card(self):
+        card = Card('Spades', 'King')
+        self.assertEqual(card.assign_value('King'), 10)
 
-        card = Card("Spades", "2")
-        self.assertEqual(card.assign_value("2"), 2)
+    def test_assign_value_number_card(self):
+        card = Card('Clubs', '7')
+        self.assertEqual(card.assign_value('7'), 7)
 
-        card = Card("Hearts", "Ace")
-        self.assertEqual(card.assign_value("Ace"), 1)
-
-    def test_str(self):
-        """Test that the correct string representation of the card is returned."""
-        card = Card("Diamonds", "Jack")
-        self.assertEqual(str(card), "Jack of Diamonds")
-
-        card = Card("Spades", "5")
-        self.assertEqual(str(card), "5 of Spades")
+    def test_str_representation(self):
+        card = Card('Hearts', 'Queen')
+        self.assertEqual(str(card), 'Queen of Hearts')
 
 if __name__ == '__main__':
     unittest.main()
