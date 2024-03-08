@@ -3,12 +3,10 @@ from scoreboard import Scoreboard
 from player import Player
 from game import GameEndException
 
-
 def main_menu():
     print(f"{'🃏🃏🃏Welcome to BlackJack!🃏🃏🃏':^40}")
 
     player = Player()
-    player.add_player(player._user_name)
     scoreboard = Scoreboard("scores.pkl")
 
     while True:
@@ -22,19 +20,20 @@ def main_menu():
             choice = input("Enter your choice: ")
 
             if choice == "1":
-                game = Game(player, scoreboard)
+                game = Game(scoreboard)
+                game.set_player(player)
                 game.start_game()
             elif choice == "2":
                 scoreboard.display_scores()
             elif choice == "3":
                 Game.game_rules()
             elif choice == "4":
+                new_name = input("Enter your new name: ")
+                game.set_player(player)
                 old_name = player.get_user_name()  # Get the current username
-                player.change_user_name()
-                new_name = player.get_user_name()  # Get the updated username
-                scoreboard.update_user_name(old_name, new_name)
-                scoreboard.save_scores()
-                print(f"Username updated successfully!\nYour new username is {new_name}.")
+                player.set_user_name(new_name)  # Set the new username for the player
+                scoreboard.change_username(old_name, new_name)  # Change the username in the scoreboard
+                scoreboard.save_scores()  # Save the updated scoreboard
             elif choice == "5":
                 Game.game_credits()
             elif choice == "6":
@@ -44,7 +43,6 @@ def main_menu():
                 print("Invalid choice. Please try again.")
         except GameEndException:
             print("Returning to the main menu.")
-
 
 if __name__ == "__main__":
     main_menu()

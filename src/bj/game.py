@@ -6,12 +6,15 @@ from gameendexception import GameEndException
 
 
 class Game:
-    def __init__(self, player, scoreboard):
+    def __init__(self, scoreboard):
         """Initialize the game."""
         self._scoreboard = scoreboard
         self._deck = None
-        self._player = player
         self._dealer = None
+
+    def set_player(self, player):
+        """Set the player for the game."""
+        self._player = player
 
     def start_game(self):
         """Start the game."""

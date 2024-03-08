@@ -38,13 +38,23 @@ class Scoreboard:
                 print(f"{player.ljust(12)} | {score}")
             print("------------------------------")
 
-    def update_user_name(self, old_name, new_name):
-        """Update the username in the scoreboard."""
-        if old_name in self._scores:
-                self._scores[new_name] = self._scores.pop(old_name)
-                self._user_name = new_name  
-        else:
-            print(f"Player {old_name} not found in the scoreboard.")
+    def change_username(self, old_name, new_name):
+        """Change the player's username."""
+        try:
+            # Check if the player's old name is in the scoreboard
+            old_name_score = self._scores.get(old_name)
+            if old_name_score is not None:
+                # Remove the old name and add the new name with the same score
+                self._scores[new_name] = self._scores.pop(old_name, 0)
+                self.save_scores()
+            else:
+                print("Player not found in the scoreboard.")
+
+            # Update the player's username
+            print(f"Username updated successfully! Your new username is {new_name}.")
+
+        except AttributeError:
+            print("Scoreboard does not have the required methods.")
 
     def load_scores(self):
         """Load the scores from the file."""
