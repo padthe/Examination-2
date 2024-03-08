@@ -1,12 +1,14 @@
 """Player class for the game of Blackjack."""
+
 from deck import Deck
 from hand import Hand
+
 
 class Player:
     def __init__(self):
         """Initialize the player."""
         self._hand = Hand()
-        self._user_name = ""  
+        self._user_name = ""
 
     def add_player(self, user_name):
         """Add a player to the game."""

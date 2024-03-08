@@ -10,7 +10,7 @@ def main_menu():
     player = Player()
     player.add_player(player._user_name)
     scoreboard = Scoreboard("scores.pkl")
-    
+
     while True:
         try:
             print("1. Play")
@@ -34,7 +34,9 @@ def main_menu():
                 new_name = player.user_name
                 scoreboard.update_user_name(old_name, new_name)
                 scoreboard.save_scores()
-                print(f"Username updated successfully!\nYour new username is {new_name}.")
+                print(
+                    f"Username updated successfully!\nYour new username is {new_name}."
+                )
             elif choice == "5":
                 Game.game_credits()
             elif choice == "6":
@@ -44,6 +46,7 @@ def main_menu():
                 print("Invalid choice. Please try again.")
         except GameEndException:
             print("Returning to the main menu.")
+
 
 if __name__ == "__main__":
     main_menu()

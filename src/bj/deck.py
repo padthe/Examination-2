@@ -1,5 +1,6 @@
 import random
 
+
 class Deck:
     def __init__(self):
         """Initialize the deck."""
@@ -8,11 +9,25 @@ class Deck:
 
     def create_deck(self):
         """Create a deck of cards."""
-        suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-        ranks = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
+        suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+        ranks = [
+            "Ace",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Jack",
+            "Queen",
+            "King",
+        ]
         for suit in suits:
             for rank in ranks:
-                self._deck.append(rank + ' of ' + suit)
+                self._deck.append(rank + " of " + suit)
 
     def shuffle_deck(self):
         """Shuffle the deck of cards."""

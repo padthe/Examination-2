@@ -4,6 +4,7 @@ from player import Player
 from scoreboard import Scoreboard
 from gameendexception import GameEndException
 
+
 class Game:
     def __init__(self, player, scoreboard):
         """Initialize the game."""
@@ -58,7 +59,7 @@ class Game:
                 while self._dealer._hand.calculate_value() < 17:
                     self._dealer.draw_card(self._deck)
                 print("Player's hand: ", self._dealer._hand._cards)
-    
+
                 player_value = self._player._hand.calculate_value()
                 dealer_value = self._dealer._hand.calculate_value()
 
@@ -73,7 +74,9 @@ class Game:
                     self.save_results("draw")
                 break
 
-        print("Press any button to play a new round, or type 'no' to return to the main menu.")
+        print(
+            "Press any button to play a new round, or type 'no' to return to the main menu."
+        )
         play_again = input().lower().strip()
         if play_again == "no":
             raise GameEndException
@@ -92,16 +95,28 @@ class Game:
     def game_rules():
         """Print the game rules."""
         print("\n🃏🎰 Welcome to the Glamorous World of Blackjack! 🎰🃏\n")
-        print("In this high-stakes game of chance, your mission is to chase the magic number 21 without going over.")
+        print(
+            "In this high-stakes game of chance, your mission is to chase the magic number 21 without going over."
+        )
         print("Here's the dazzling rundown:")
         print("- Both you and the dealer kick off with a duo of tantalizing cards.")
         print("- Will you 'hit' for another card or 'stand' to savor the suspense?")
-        print("- Exceed 21, and you'll be washed away in a wave of defeat. Dealer's bust? You're the star!")
-        print("- Nail a perfect 21, and you're crowned with the Blackjack glory. Dealer hits it? They steal the show.")
-        print("- Opt for 'stand,' and the dealer dances with the cards until reaching the swanky 17.")
-        print("- The player closest to 21 without a bust claims the red carpet victory.")
+        print(
+            "- Exceed 21, and you'll be washed away in a wave of defeat. Dealer's bust? You're the star!"
+        )
+        print(
+            "- Nail a perfect 21, and you're crowned with the Blackjack glory. Dealer hits it? They steal the show."
+        )
+        print(
+            "- Opt for 'stand,' and the dealer dances with the cards until reaching the swanky 17."
+        )
+        print(
+            "- The player closest to 21 without a bust claims the red carpet victory."
+        )
         print("\nMay the cards be ever in your favor! 🌟\n")
-        print("Feel the thrill? Ready to roll again or gracefully exit the stage? The choice is yours.")
+        print(
+            "Feel the thrill? Ready to roll again or gracefully exit the stage? The choice is yours."
+        )
         print(" ")
         print(" ")
 
@@ -119,10 +134,12 @@ class Game:
             "- Bug Whisperer: Patrick (taming bugs with a gentle touch)",
             "Special Thanks (drumroll):",
             "- Patrick ",
-            ]
+        ]
 
         for line in credits:
             print(line)
             time.sleep(1)
 
-        print("\nThat's a wrap! Thanks for playing and enjoy your solo standing ovation! 👏👏👏\n")
+        print(
+            "\nThat's a wrap! Thanks for playing and enjoy your solo standing ovation! 👏👏👏\n"
+        )

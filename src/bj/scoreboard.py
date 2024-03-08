@@ -1,5 +1,6 @@
 import pickle
 
+
 class Scoreboard:
     def __init__(self, filename="scores.pkl"):
         """Initialize the scoreboard."""
@@ -25,7 +26,9 @@ class Scoreboard:
         if not self._scores:
             print("No players in the scoreboard.")
         else:
-            sorted_scores = sorted(self._scores.items(), key=lambda x: x[1], reverse=True)
+            sorted_scores = sorted(
+                self._scores.items(), key=lambda x: x[1], reverse=True
+            )
 
             print("🌟 Let's see who is currently at the top! 🌟")
             print("------------------------------")
