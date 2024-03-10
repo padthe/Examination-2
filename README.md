@@ -23,7 +23,7 @@ I welcome contributions to enhance Examination-2. Here's how you can contribute:
 
 1. Fork the repository on GitHub.
 2. Clone your forked repository to your local machine:
-   - Use the command `git clone https://github.com/your-username/Examination-2.git`
+   - Use the command `git clone https://github.com/padthe/Examination-2.git`
    - Navigate to the project directory: `cd Examination-2`
 
 3. Create a new branch for your feature or bug fix:
