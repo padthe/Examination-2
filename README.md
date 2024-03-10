@@ -45,7 +45,7 @@ Contact Information
 For inquiries or assistance, contact the project maintainer:
 
 - Patrick Nordahl
-- Email: patrick.nordahl0033@padthe.stud.se
+- Email: patrick.nordahl0033@stud.hkr.se
 - [GitHub Profile](https://github.com/padthe)
 
 
